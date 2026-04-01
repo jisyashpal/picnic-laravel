@@ -16,10 +16,10 @@ class FlavourController extends Controller
         if ($category) {
             $selectedCategory = Category::where('slug', $category)->first();
             if ($selectedCategory) {
-                $products = $selectedCategory->products;
+                $products = $selectedCategory->products()->paginate(12);
             }
         } else {
-            $products = Product::with('category')->get();
+            $products = Product::with('category')->paginate(12);
         }
 
         return view('pages.flavours', [
@@ -27,6 +27,13 @@ class FlavourController extends Controller
             'category' => $category,
             'selectedCategory' => $selectedCategory,
             'products' => $products,
+        ]);
+    }
+
+    public function show(Product $product)
+    {
+        return view('pages.product-detail', [
+            'product' => $product->load('category'),
         ]);
     }
 }

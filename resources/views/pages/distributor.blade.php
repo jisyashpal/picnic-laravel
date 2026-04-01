@@ -3,154 +3,200 @@
 @section('title', 'Distributor - Picnic Ice Creams')
 
 @section('content')
-<section class="about-franchise py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h2><span>Distributor</span> Happiness<br>Together</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil rerum, magni sit labore quam ullam in aut iusto perspiciatis explicabo quibusdam similique quas ab eaque, qui, doloribus non recusandae hic.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil rerum, magni sit labore quam ullam in aut iusto perspiciatis explicabo quibusdam similique quas ab eaque, qui, doloribus non recusandae hic.</p>
-                <a href="#contact-business" class="btn btn-submit-pink blink text-white px-3 px-md-4 py-2 rounded fw-semibold small">APPLY NOW</a>
-            </div>
-            <div class="col-md-6">
-                <img src="{{ asset('assets/images/ice-creem/7.png') }}" alt="Distributor" class="img-fluid">
+    <section class="about-franchise py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2><span>Become a</span> Distributor<br><span>Partner With PICNIC</span></h2>
+                    <p>Join hands with PICNIC Ice Creams as a distributor and be part of our growing success story. We offer
+                        premium quality ice creams made with 100% pure cow milk, traditional recipes, and modern packaging
+                        that appeals to all age groups.</p>
+                    <p>As a PICNIC distributor, you'll enjoy competitive margins, dedicated support, timely delivery, and
+                        the opportunity to serve your community with delicious, healthy ice cream products that everyone
+                        loves.</p>
+                    <a href="#contact-business"
+                        class="btn btn-submit-pink blink text-white px-3 px-md-4 py-2 rounded fw-semibold small">APPLY
+                        NOW</a>
+                </div>
+                <div class="col-md-6">
+                    <img src="{{ asset('public/assets/images/ice-creem/7.png') }}" alt="Distributor" class="img-fluid">
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="wooden py-4">
-    <div class="container">
-        <div class="row">
-            <h2 class="text-end pb-1">BUILD YOUR FUTURE<br>TAKE CHARGE!!!<br>FILL A DISTRIBUTOR FORM TODAY</h2>
-            <div class="col-md-6">
-                <img src="{{ asset('assets/images/frenchise/wooden.png') }}" alt="Wooden" class="img-fluid">
-            </div>
-            <div class="col-md-6">
-                <p class="text-end">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto error et necessitatibus nesciunt, nisi corrupti quisquam, expedita, sapiente sunt quod nostrum voluptatibus. Nobis, nisi pariatur quidem ab impedit corrupti nostrum.</p>
+    <section class="wooden py-4">
+        <div class="container">
+            <div class="row">
+                <h2 class="text-end pb-1">BUILD YOUR FUTURE<br>TAKE CHARGE!!!<br>FILL A DISTRIBUTOR FORM TODAY</h2>
+                <div class="col-md-6">
+                    <img src="{{ asset('public/assets/images/frenchise/wooden.png') }}" alt="Wooden" class="img-fluid">
+                </div>
+                <div class="col-md-6">
+                    <p class="text-end">Take charge of your business future today! Join PICNIC Ice Creams as a distributor
+                        and become part of a growing network serving premium quality ice creams. Our products are made with
+                        100% pure cow milk and traditional recipes that customers trust and love. Fill out our distributor
+                        application form and start your journey towards a profitable business partnership.</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="advantage-outlook">
-    <div class="container-fluid">
-        <div class="row advantage-sec py-3">
-            <div class="col-md-1"></div>
-            <div class="col-md-5">
-                <div class="container-fluid">
-                    <div class="row d-flex justify-content-center ">
-                        <h2 class="mt-2">THE PICNIC ADVANTAGE</h2>
-                        <div class="col-md-5 pb-2"><img src="{{ asset('assets/images/frenchise/poster-1.png') }}" alt="" class="img-fluid"></div>
-                        <div class="col-md-5 pb-2"><img src="{{ asset('assets/images/frenchise/poster-2.png') }}" alt="" class="img-fluid"></div>
-                        <div class="col-md-5 pb-2"><img src="{{ asset('assets/images/frenchise/poster-3.png') }}" alt="" class="img-fluid"></div>
-                        <div class="col-md-5 pb-2"><img src="{{ asset('assets/images/frenchise/poster-4.png') }}" alt="" class="img-fluid"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-5 outlook" style="background: pink;">
-                <h2 class="mt-2">COMPETITION OUTLOOK</h2>
-                <div class="container-fluid">
-                    <div class="row d-flex justify-content-center ">
-                        <div class="col-md-5 pb-2"><img src="{{ asset('assets/images/frenchise/outlook-1.png') }}" alt="" class="img-fluid"></div>
-                        <div class="col-md-5 pb-2"><img src="{{ asset('assets/images/frenchise/outlook-2.png') }}" alt="" class="img-fluid"></div>
-                        <div class="col-md-5 pb-2"><img src="{{ asset('assets/images/frenchise/outlook-3.png') }}" alt="" class="img-fluid"></div>
-                        <div class="col-md-5 pb-2"><img src="{{ asset('assets/images/frenchise/outlook-4.png') }}" alt="" class="img-fluid"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="custom-bg py-5 distributor-sec" id="contact-business">
-    <div class="container text-center px-3 px-md-5">
-        @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
-        <div class="row g-4 g-md-5 align-items-center">
-            <div class="col-md-6">
-                <form class="bg-white p-4 rounded-3 shadow-lg" method="POST" action="{{ route('leads.distributor') }}">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="name" class="form-label text-start d-block fw-semibold text-dark">Name</label>
-                        <input type="text" id="name" name="name" class="form-control border-2" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="phone" class="form-label text-start d-block fw-semibold text-dark">Contact Number</label>
-                        <input type="tel" id="phone" name="phone" class="form-control border-2" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="whatsapp" class="form-label text-start d-block fw-semibold text-dark">Whatsapp</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" class="form-control border-2">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label text-start d-block fw-semibold text-dark">Email</label>
-                        <input type="email" id="email" name="email" class="form-control border-2">
-                    </div>
-                    <div class="mb-3">
-                        <label for="address" class="form-label text-start d-block fw-semibold text-dark">Location</label>
-                        <textarea id="address" name="address" rows="3" class="form-control border-2"></textarea>
-                    </div>
-                    <button type="submit" class="w-100 btn text-white py-2 rounded btn-submit-pink">Submit</button>
-                </form>
-            </div>
-            <div class="col-md-6">
-                <img src="{{ asset('assets/images/500x350.png') }}" alt="Contact Distributor" class="w-100 h-auto rounded-3">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="bg py-5 px-3 px-md-5">
-    <div class="container text-center">
-        <h2 class="h1 fw-bold text-shadow-dark mb-4"><span class="text-success">Get In Touch</span></h2>
-        <p class="fs-6 mb-5">Got questions? We'd love to hear from you!</p>
-        <div class="row g-4 justify-content-center">
-            <div class="col-md-4 mb-4">
-                <div class="card rounded-4 shadow-lg p-4 h-100 text-center">
-                    <i class="bi bi-telephone-fill text-danger fs-1 mb-3"></i>
-                    <h5 class="fw-bold mb-3">Phone</h5>
-                    <p class="text-muted mb-3">Call us directly</p>
-                    <a href="tel:+919031007352" class="btn btn-submit-pink blink text-white px-4 py-2 rounded fw-semibold">+91-90310-07352</a>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card rounded-4 shadow-lg p-4 h-100 text-center">
-                    <i class="bi bi-envelope-fill text-danger fs-1 mb-3"></i>
-                    <h5 class="fw-bold mb-3">Email</h5>
-                    <p class="text-muted mb-3">Send us a message</p>
-                    <a href="mailto:picnicicecreams@gmail.com" class="btn btn-submit-pink blink text-white px-4 py-2 rounded fw-semibold">Email Us</a>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card rounded-4 shadow-lg p-4 h-100 text-center">
-                    <i class="bi bi-geo-alt-fill text-danger fs-1 mb-3"></i>
-                    <h5 class="fw-bold mb-3">Visit Us</h5>
-                    <p class="text-muted mb-3">Find our locations</p>
-                    <a href="#contact-business" class="btn btn-submit-pink blink text-white px-4 py-2 rounded fw-semibold">Main Office</a>
-                </div>
-            </div>
-        </div>
-        <div class="mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-8 brand-contact">
-                    <div class="card rounded-4 shadow-lg p-4">
-                        <h4 class="fw-bold mb-3 text-center">Contact Information</h4>
-                        <div class="row text-start">
-                            <div class="col-md-6 mb-3"><p class="mb-2"><i class="bi bi-geo-alt-fill text-danger me-2"></i><span class="fw-bold">Main Office:</span></p><p class="ms-4 small">Ground Floor, Laxmi Tower, Kokar, Ranchi</p></div>
-                            <div class="col-md-6 mb-3"><p class="mb-2"><i class="bi bi-building text-danger me-2"></i><span class="fw-bold">Factory Address:</span></p><p class="ms-4 small">Dahu, Ormanjhi, Ranchi</p></div>
-                            <div class="col-md-6 mb-3"><p class="mb-2"><i class="bi bi-telephone-fill text-danger me-2"></i><span class="fw-bold">Phone:</span></p><a href="tel:+91-90310-07352"><p class="ms-4 small">+91-90310-07352</p></a></div>
-                            <div class="col-md-6 mb-3"><p class="mb-2"><i class="bi bi-envelope-fill text-danger me-2"></i><span class="fw-bold">Email:</span></p><a href="mailto:picnicicecreams@gmail.com"><p class="ms-4 small">picnicicecreams@gmail.com</p></a></div>
+    <section class="advantage-outlook bg">
+        <div class="container-fluid">
+            <div class="row advantage-sec py-3">
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <div class="container-fluid">
+                        <div class="row d-flex justify-content-center ">
+                            <h2 class="mt-2">THE PICNIC ADVANTAGE</h2>
+                            <div class="col-5 pb-2"><img src="{{ asset('public/assets/images/frenchise/poster-1.png') }}"
+                                    alt="" class="img-fluid"></div>
+                            <div class="col-5 pb-2"><img src="{{ asset('public/assets/images/frenchise/poster-2.png') }}"
+                                    alt="" class="img-fluid"></div>
+                            <div class="col-5 pb-2"><img src="{{ asset('public/assets/images/frenchise/poster-3.png') }}"
+                                    alt="" class="img-fluid"></div>
+                            <div class="col-5 pb-2"><img src="{{ asset('public/assets/images/frenchise/poster-4.png') }}"
+                                    alt="" class="img-fluid"></div>
                         </div>
-                        <div class="text-center mt-4">
-                            <a href="{{ route('contact') }}" class="btn btn-submit-pink blink text-white px-5 py-3 rounded fw-semibold"><i class="bi bi-arrow-right-circle-fill me-2"></i>View Full Contact Page</a>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-5 outlook" style="background: pink;">
+                    <h2 class="mt-2">COMPETITION OUTLOOK</h2>
+                    <div class="container-fluid">
+                        <div class="row d-flex justify-content-center ">
+                            <div class="col-5 pb-2"><img src="{{ asset('public/assets/images/frenchise/outlook-1.png') }}"
+                                    alt="" class="img-fluid"></div>
+                            <div class="col-5 pb-2"><img src="{{ asset('public/assets/images/frenchise/outlook-2.png') }}"
+                                    alt="" class="img-fluid"></div>
+                            <div class="col-5 pb-2"><img src="{{ asset('public/assets/images/frenchise/outlook-3.png') }}"
+                                    alt="" class="img-fluid"></div>
+                            <div class="col-5 pb-2"><img src="{{ asset('public/assets/images/frenchise/outlook-4.png') }}"
+                                    alt="" class="img-fluid"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <hr class="my-0">
+    <section class="custom-bg py-5 distributor-sec" id="contact-business">
+        <div class="container text-center px-3 px-md-5">
+            @if (session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+            <div class="row g-4 g-md-5 align-items-center">
+                <div class="col-md-6">
+                    <form class="bg-white p-4 rounded-3 shadow-lg" method="POST"
+                        action="{{ route('leads.distributor') }}">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="name" class="form-label text-start d-block fw-semibold text-dark">Name</label>
+                            <input type="text" id="name" name="name" class="form-control border-2" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label text-start d-block fw-semibold text-dark">Contact
+                                Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control border-2" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="whatsapp"
+                                class="form-label text-start d-block fw-semibold text-dark">Whatsapp</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" class="form-control border-2">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label text-start d-block fw-semibold text-dark">Email</label>
+                            <input type="email" id="email" name="email" class="form-control border-2">
+                        </div>
+                        <div class="mb-3">
+                            <label for="address"
+                                class="form-label text-start d-block fw-semibold text-dark">Location</label>
+                            <textarea id="address" name="address" rows="3" class="form-control border-2"></textarea>
+                        </div>
+                        <button type="submit" class="w-100 btn text-white py-2 rounded btn-submit-pink">Submit</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <img src="{{ asset('public/assets/images/500x350.png') }}" alt="Contact Distributor"
+                        class="w-100 h-auto rounded-3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg py-5 px-3 px-md-5">
+        <div class="container text-center">
+            <h2 class="h1 fw-bold text-shadow-dark mb-4"><span class="text-success">Get In Touch</span></h2>
+            <p class="fs-6 mb-5">Got questions? We'd love to hear from you!</p>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4 mb-4">
+                    <div class="card rounded-4 shadow-lg p-4 h-100 text-center">
+                        <i class="bi bi-telephone-fill text-danger fs-1 mb-3"></i>
+                        <h5 class="fw-bold mb-3">Phone</h5>
+                        <p class="text-muted mb-3">Call us directly</p>
+                        <a href="tel:+919031007352"
+                            class="btn btn-submit-pink blink text-white px-4 py-2 rounded fw-semibold">+91-90310-07352</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card rounded-4 shadow-lg p-4 h-100 text-center">
+                        <i class="bi bi-envelope-fill text-danger fs-1 mb-3"></i>
+                        <h5 class="fw-bold mb-3">Email</h5>
+                        <p class="text-muted mb-3">Send us a message</p>
+                        <a href="mailto:picnicicecreams@gmail.com"
+                            class="btn btn-submit-pink blink text-white px-4 py-2 rounded fw-semibold">Email Us</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card rounded-4 shadow-lg p-4 h-100 text-center">
+                        <i class="bi bi-geo-alt-fill text-danger fs-1 mb-3"></i>
+                        <h5 class="fw-bold mb-3">Visit Us</h5>
+                        <p class="text-muted mb-3">Find our locations</p>
+                        <a href="#contact-business"
+                            class="btn btn-submit-pink blink text-white px-4 py-2 rounded fw-semibold">Main Office</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 brand-contact">
+                        <div class="card rounded-4 shadow-lg p-4">
+                            <h4 class="fw-bold mb-3 text-center">Contact Information</h4>
+                            <div class="row text-start">
+                                <div class="col-md-6 mb-3">
+                                    <p class="mb-2"><i class="bi bi-geo-alt-fill text-danger me-2"></i><span
+                                            class="fw-bold">Main Office:</span></p>
+                                    <p class="ms-4 small">Ground Floor, Laxmi Tower, Kokar, Ranchi</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <p class="mb-2"><i class="bi bi-building text-danger me-2"></i><span
+                                            class="fw-bold">Factory Address:</span></p>
+                                    <p class="ms-4 small">Dahu, Ormanjhi, Ranchi</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <p class="mb-2"><i class="bi bi-telephone-fill text-danger me-2"></i><span
+                                            class="fw-bold">Phone:</span></p><a href="tel:+91-90310-07352">
+                                        <p class="ms-4 small">+91-90310-07352</p>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <p class="mb-2"><i class="bi bi-envelope-fill text-danger me-2"></i><span
+                                            class="fw-bold">Email:</span></p><a href="mailto:picnicicecreams@gmail.com">
+                                        <p class="ms-4 small">picnicicecreams@gmail.com</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="text-center mt-4">
+                                <a href="{{ route('contact') }}"
+                                    class="btn btn-submit-pink blink text-white px-5 py-3 rounded fw-semibold"><i
+                                        class="bi bi-arrow-right-circle-fill me-2"></i>View Full Contact Page</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

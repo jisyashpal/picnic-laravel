@@ -20,7 +20,7 @@ class HomeController extends Controller
             'categories' => Category::orderBy('sort_order')->limit(4)->get(),
             'testimonials' => Testimonial::limit(6)->get(),
             'videos' => Video::limit(6)->get(),
-            'instagram_posts' => InstagramPost::limit(8)->get(),
+            'instagram_posts' => InstagramPost::limit(12)->get(),
             'featured_products' => Product::with('category')->limit(8)->get(),
         ]);
     }

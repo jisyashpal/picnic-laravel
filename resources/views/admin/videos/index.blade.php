@@ -15,6 +15,7 @@
             <thead>
                 <tr>
                     <th>#</th>
+                    <th>Preview</th>
                     <th>Video ID</th>
                     <th>Type</th>
                     <th>Actions</th>
@@ -24,6 +25,11 @@
             @forelse($videos as $video)
                 <tr>
                     <td>{{ $video->id }}</td>
+                    <td>
+                        <a href="https://www.youtube.com/watch?v={{ $video->video_id }}" target="_blank" rel="noopener">
+                            <img src="https://img.youtube.com/vi/{{ $video->video_id }}/mqdefault.jpg" alt="video thumbnail" style="width:160px;height:auto;border-radius:4px;">
+                        </a>
+                    </td>
                     <td><code>{{ $video->video_id }}</code></td>
                     <td>{{ $video->type }}</td>
                     <td>
@@ -35,7 +41,7 @@
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="4" class="text-center text-muted py-4">No videos. <a href="{{ route('admin.videos.create') }}">Create one</a></td></tr>
+                <tr><td colspan="5" class="text-center text-muted py-4">No videos. <a href="{{ route('admin.videos.create') }}">Create one</a></td></tr>
             @endforelse
             </tbody>
         </table>

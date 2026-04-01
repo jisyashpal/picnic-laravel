@@ -61,11 +61,11 @@ class ContentSeeder extends Seeder
         Product::create(['name' => 'Classic Malai Kulfi', 'price' => 30.00, 'category_id' => $kulfi->id]);
         Product::create(['name' => 'Kesar Pista Kulfi', 'price' => 40.00, 'category_id' => $kulfi->id]);
         Product::create(['name' => 'Mango Kulfi', 'price' => 35.00, 'category_id' => $kulfi->id]);
-        
+
         Product::create(['name' => 'Vanilla Ice Cream', 'price' => 50.00, 'category_id' => $iceCreams->id]);
         Product::create(['name' => 'Chocolate Ice Cream', 'price' => 55.00, 'category_id' => $iceCreams->id]);
         Product::create(['name' => 'Strawberry Ice Cream', 'price' => 60.00, 'category_id' => $iceCreams->id]);
-        
+
         Product::create(['name' => 'Orange Candy', 'price' => 10.00, 'category_id' => $iceCandy->id]);
         Product::create(['name' => 'Cola Candy', 'price' => 10.00, 'category_id' => $iceCandy->id]);
 
@@ -100,8 +100,14 @@ class ContentSeeder extends Seeder
         Video::create(['video_id' => 'NjQuKkfWGTaVbD3F', 'type' => 'youtube']);
 
         // Instagram
-        InstagramPost::create(['post_url' => 'https://www.instagram.com/p/DQ54-fyiO0G/']);
-        InstagramPost::create(['post_url' => 'https://www.instagram.com/p/DRmdEt-Ec_E/']);
+        InstagramPost::create([
+            'image' => 'public/assets/images/flavors/1.png',
+            'post_url' => 'https://www.instagram.com/p/DQ54-fyiO0G/'
+        ]);
+        InstagramPost::create([
+            'image' => 'public/assets/images/flavors/2.png',
+            'post_url' => 'https://www.instagram.com/p/DRmdEt-Ec_E/'
+        ]);
 
         // Sample Store
         Store::create([

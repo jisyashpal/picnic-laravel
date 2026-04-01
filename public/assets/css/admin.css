@@ -13,12 +13,14 @@
 body.admin-body {
     min-height: 100vh;
     background: radial-gradient(circle at 18% 20%, rgba(255, 138, 92, 0.12), transparent 34%),
-                radial-gradient(circle at 80% 0%, rgba(124, 194, 255, 0.18), transparent 42%),
-                linear-gradient(180deg, var(--brand-cream) 0%, #eaf5ff 60%, #ffffff 100%);
+        radial-gradient(circle at 80% 0%, rgba(124, 194, 255, 0.18), transparent 42%),
+        linear-gradient(180deg, var(--brand-cream) 0%, #eaf5ff 60%, #ffffff 100%);
     color: var(--ink);
 }
 
-.admin-shell { min-height: 100vh; }
+.admin-shell {
+    min-height: 100vh;
+}
 
 .sidebar {
     width: 260px;
@@ -27,7 +29,10 @@ body.admin-body {
     box-shadow: var(--shadow);
 }
 
-.sidebar h5 { color: var(--ink); font-weight: 800; }
+.sidebar h5 {
+    color: var(--ink);
+    font-weight: 800;
+}
 
 .sidebar .nav-link {
     padding: 0.85rem 1.1rem;
@@ -63,14 +68,25 @@ body.admin-body {
 }
 
 .navbar-admin .navbar-brand,
-.navbar-admin .text-light { color: #ffffff !important; }
+.navbar-admin .text-light {
+    color: #ffffff !important;
+}
 
 .navbar-admin .btn {
     border-color: transparent;
     color: var(--ink);
 }
 
-.container-fluid.py-4 { padding-bottom: 2.5rem !important; }
+@media (max-width: 768px) {
+    .navbar-admin .navbar-brand {
+        font-size: 1rem;
+    }
+}
+
+
+.container-fluid.py-4 {
+    padding-bottom: 2.5rem !important;
+}
 
 .admin-card {
     background: #ffffff;
@@ -94,10 +110,34 @@ body.admin-body {
     pointer-events: none;
 }
 
-.metric-label { color: var(--muted); font-weight: 700; letter-spacing: 0.02em; z-index: 1; position: relative; }
-.metric-value { font-weight: 800; font-size: 1.9rem; line-height: 1.1; z-index: 1; position: relative; }
-.metric-link { font-weight: 600; color: var(--ink); text-decoration: none; z-index: 1; position: relative; }
-.metric-link:hover { color: var(--brand-pink); }
+.metric-label {
+    color: var(--muted);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    z-index: 1;
+    position: relative;
+}
+
+.metric-value {
+    font-weight: 800;
+    font-size: 1.9rem;
+    line-height: 1.1;
+    z-index: 1;
+    position: relative;
+}
+
+.metric-link {
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    z-index: 1;
+    position: relative;
+}
+
+.metric-link:hover {
+    color: var(--brand-pink);
+}
+
 .metric-dot {
     width: 12px;
     height: 12px;
@@ -106,11 +146,26 @@ body.admin-body {
     z-index: 1;
     position: relative;
 }
-.metric-dot.bg-orange { background: var(--brand-orange); box-shadow: 0 0 0 6px rgba(255, 138, 92, 0.12); }
-.metric-dot.bg-pink { background: var(--brand-pink); box-shadow: 0 0 0 6px rgba(255, 112, 150, 0.12); }
-.metric-dot.bg-blue { background: var(--brand-blue); box-shadow: 0 0 0 6px rgba(124, 194, 255, 0.16); }
 
-.admin-form label { font-weight: 700; color: var(--ink); }
+.metric-dot.bg-orange {
+    background: var(--brand-orange);
+    box-shadow: 0 0 0 6px rgba(255, 138, 92, 0.12);
+}
+
+.metric-dot.bg-pink {
+    background: var(--brand-pink);
+    box-shadow: 0 0 0 6px rgba(255, 112, 150, 0.12);
+}
+
+.metric-dot.bg-blue {
+    background: var(--brand-blue);
+    box-shadow: 0 0 0 6px rgba(124, 194, 255, 0.16);
+}
+
+.admin-form label {
+    font-weight: 700;
+    color: var(--ink);
+}
 
 .admin-form .form-control,
 .admin-form .form-select,
@@ -128,13 +183,21 @@ body.admin-body {
     box-shadow: 0 0 0 0.2rem rgba(255, 138, 92, 0.18);
 }
 
-.table { color: var(--ink); }
+.table {
+    color: var(--ink);
+}
 
-.table thead { color: var(--muted); }
+.table thead {
+    color: var(--muted);
+}
 
-.table-hover tbody tr:hover { background-color: rgba(255, 138, 92, 0.06); }
+.table-hover tbody tr:hover {
+    background-color: rgba(255, 138, 92, 0.06);
+}
 
-.table-striped > tbody > tr:nth-of-type(odd) { --bs-table-accent-bg: #fff8f3; }
+.table-striped>tbody>tr:nth-of-type(odd) {
+    --bs-table-accent-bg: #fff8f3;
+}
 
 .table-modern {
     border-collapse: separate;
@@ -152,12 +215,18 @@ body.admin-body {
     font-weight: 700;
 }
 
-.table-modern tbody tr + tr td { border-top: 1px solid var(--border); }
+.table-modern tbody tr+tr td {
+    border-top: 1px solid var(--border);
+}
 
 .table-modern td,
-.table-modern th { padding: 0.85rem 1rem; }
+.table-modern th {
+    padding: 0.85rem 1rem;
+}
 
-.table-modern tbody tr:hover { background: rgba(255, 138, 92, 0.06); }
+.table-modern tbody tr:hover {
+    background: rgba(255, 138, 92, 0.06);
+}
 
 .preview-thumb {
     max-height: 120px;
@@ -175,13 +244,50 @@ body.admin-body {
     background: #ffffff;
     color: var(--ink);
     border-right: 1px solid var(--border);
+    z-index: 1050;
 }
 
-.admin-offcanvas .nav-link { color: var(--ink); }
+.admin-offcanvas .offcanvas-body {
+    padding: 1rem;
+}
+
+.admin-offcanvas .nav-link {
+    color: var(--ink);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 2px;
+    transition: all 0.2s ease;
+    position: relative;
+    z-index: 10;
+}
+
+.admin-offcanvas .nav-link:hover {
+    background: rgba(255, 138, 92, 0.08);
+    color: var(--ink);
+}
 
 .admin-offcanvas .nav-link.active {
     background: linear-gradient(120deg, var(--brand-orange), var(--brand-pink));
     color: #ffffff;
+    box-shadow: 0 4px 12px rgba(255, 138, 92, 0.25);
 }
 
-.admin-offcanvas .btn-close { filter: none; }
+.admin-offcanvas .btn-close {
+    filter: none;
+    opacity: 0.7;
+}
+
+.admin-offcanvas .btn-close:hover {
+    opacity: 1;
+}
+
+/* Mobile navigation button */
+.navbar-admin .btn {
+    position: relative;
+    z-index: 20;
+}
+
+/* Ensure offcanvas backdrop works */
+.offcanvas-backdrop {
+    z-index: 1040;
+}

@@ -8,7 +8,9 @@
         <div class="card-header bg-white">
             <div class="d-flex justify-content-between align-items-center">
                 <h6 class="mb-0">Form Submissions</h6>
-                <a href="#" class="btn btn-sm btn-outline-secondary disabled">Export CSV (todo)</a>
+                <a href="{{ route('admin.leads.export') }}" class="btn btn-sm btn-success">
+                    <i class="fas fa-download me-1"></i>Export CSV
+                </a>
             </div>
         </div>
         <div class="card-body">

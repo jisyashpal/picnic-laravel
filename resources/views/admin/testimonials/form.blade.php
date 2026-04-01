@@ -4,7 +4,7 @@
 @section('header', isset($testimonial) ? 'Edit Testimonial' : 'Add Testimonial')
 
 @section('content')
-<div class="card admin-card" style="max-width: 700px;">
+<div class="card admin-card mx-auto" style="max-width: 700px;">
     <div class="card-body">
         <form action="{{ isset($testimonial) ? route('admin.testimonials.update', $testimonial) : route('admin.testimonials.store') }}" method="POST" class="admin-form">
             @csrf

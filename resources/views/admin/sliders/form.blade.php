@@ -41,7 +41,7 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                     <div id="imagePreview" class="mt-2" @if (empty($slider?->image)) style="display:none;" @endif>
-                        <img id="previewImg" src="{{ asset($slider?->image ?? '') }}" alt="Preview"
+                        <img id="previewImg" src="{{ asset('public/' . ($slider?->image ?? '')) }}" alt="Preview"
                             class="img-thumbnail preview-thumb">
                         <p class="small text-muted mt-1">
                             {{ !empty($slider?->image) ? 'Current: ' . basename($slider->image) : '' }}</p>

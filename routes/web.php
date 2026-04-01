@@ -13,17 +13,20 @@ use App\Http\Controllers\Admin\StoreController as AdminStoreController;
 use App\Http\Controllers\Admin\TestimonialController as AdminTestimonialController;
 use App\Http\Controllers\Admin\VideoController as AdminVideoController;
 use App\Http\Controllers\Admin\SliderController as AdminSliderController;
+use App\Http\Controllers\Admin\InstagramPostController as AdminInstagramPostController;
 use Illuminate\Support\Facades\Route;
 
 // Public Pages
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/brand-story', [PageController::class, 'about'])->name('about');
 Route::get('/order', [PageController::class, 'order'])->name('order');
 Route::get('/media', [PageController::class, 'media'])->name('media');
 Route::get('/store-locator', [PageController::class, 'storeLocator'])->name('store.locator');
 Route::get('/franchise', [PageController::class, 'franchise'])->name('franchise');
 Route::get('/distributor', [PageController::class, 'distributor'])->name('distributor');
 Route::get('/flavours/{category?}', [FlavourController::class, 'index'])->name('flavours');
+Route::get('/product/{product}', [FlavourController::class, 'show'])->name('product.show');
 
 // Lead submission endpoints
 Route::post('/contact', [LeadController::class, 'storeContact'])->name('contact.store');
@@ -42,12 +45,14 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('leads', AdminLeadController::class)->only(['index']);
+    Route::get('leads-export', [AdminLeadController::class, 'export'])->name('leads.export');
     Route::resource('categories', AdminCategoryController::class);
     Route::resource('products', AdminProductController::class);
     Route::resource('stores', AdminStoreController::class);
     Route::resource('testimonials', AdminTestimonialController::class);
     Route::resource('videos', AdminVideoController::class);
     Route::resource('sliders', AdminSliderController::class);
+    Route::resource('instagram-posts', AdminInstagramPostController::class);
 });
 
 // Auth routes (from Breeze)

@@ -3,34 +3,69 @@
 @section('title', 'Our Flavours')
 
 @section('content')
-<div class="container py-5">
-    <h1 class="h3 mb-4 text-center">Our Flavours</h1>
-    
-    @if($selectedCategory)
-        <p class="text-center text-muted">Showing: <strong>{{ $selectedCategory->name }}</strong></p>
-    @endif
+    <section class="products-section py-5">
+        <div class="container">
+            <h2 class="title text-center mb-5">Our Delicious Flavours</h2>
 
-    <div class="row g-3 mt-4">
-        @forelse($products as $product)
-            <div class="col-6 col-md-3">
-                <div class="card shadow-sm h-100">
-                    <div class="card-body text-center">
-                        @if($product->image)
-                            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="img-fluid mb-2" style="max-height: 120px;">
-                        @endif
-                        <h6 class="mb-1">{{ $product->name }}</h6>
-                        @if($product->price)
-                            <p class="text-primary fw-bold mb-0">₹{{ number_format($product->price, 2) }}</p>
-                        @endif
-                        <small class="text-muted">{{ $product->category?->name }}</small>
-                    </div>
+            {{-- All Flavours Link --}}
+            <div class="text-center mb-4">
+                <a href="{{ route('flavours') }}" class="all-flavours-simple {{ !$selectedCategory ? 'active' : '' }}">
+                    <i class="fas fa-list-ul me-2"></i>
+                    All Flavours
+                    <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+
+            <div class="products-layout row">
+                {{-- LEFT: Categories --}}
+                <div class="categories col-md-4">
+                    @foreach ($categories as $cat)
+                        <a href="{{ route('flavours', $cat->slug) }}"
+                            class="cat-item mb-3 {{ $selectedCategory?->id === $cat->id ? 'active' : '' }}">
+                            <img src="{{ asset('public/' . ($cat->thumbnail ?? 'public/assets/images/500x350.png')) }}"
+                                alt="{{ $cat->name }}">
+                            <span>{{ $cat->name }}</span>
+                        </a>
+                    @endforeach
                 </div>
+
+                {{-- RIGHT: Products --}}
+                <div class="col-md-8">
+                    <div class="row">
+                        @forelse($products as $product)
+                            <div class="col-md-4 mb-4">
+                                <div class="product-card text-center">
+                                    @if ($product->image)
+                                        <img src="{{ asset('public/' . $product->image) }}" alt="{{ $product->name }}">
+                                    @endif
+
+                                    <h4 class="mt-2">{{ $product->name }}</h4>
+
+                                    @if ($product->price)
+                                        <p class="price">₹{{ number_format($product->price, 2) }}</p>
+                                    @endif
+
+                                    <a href="{{ route('product.show', $product) }}" class="btn btn-outline-primary btn-sm">
+                                        See Details
+                                    </a>
+                                </div>
+                            </div>
+                        @empty
+                            <p class="text-muted text-center">
+                                No products available.
+                            </p>
+                        @endforelse
+                    </div>
+
+                    {{-- Pagination --}}
+                    @if($products->hasPages())
+                        <div class="d-flex justify-content-center mt-4">
+                            {{ $products->links() }}
+                        </div>
+                    @endif
+                </div>
+
             </div>
-        @empty
-            <div class="col-12">
-                <p class="text-center text-muted">No products available in this category yet.</p>
-            </div>
-        @endforelse
-    </div>
-</div>
+        </div>
+    </section>
 @endsection

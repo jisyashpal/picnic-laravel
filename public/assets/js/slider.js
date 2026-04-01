@@ -1,7 +1,18 @@
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
+const sliderTitle = document.getElementById('slider-title');
 let current = 0;
 let autoSlide;
+
+// Extract slide titles from data attributes or default content
+const slideTitles = [];
+slides.forEach((slide, index) => {
+    const offerBadge = slide.querySelector('.offer-badge');
+    slideTitles[index] = {
+        title: slide.dataset.title || (index === 0 ? sliderTitle.querySelector('h1').innerHTML : ''),
+        subtitle: slide.dataset.subtitle || (index === 0 ? (sliderTitle.querySelector('p') ? sliderTitle.querySelector('p').innerHTML : '') : '')
+    };
+});
 
 // Check if slider elements exist on this page
 if (slides.length > 0 && dots.length > 0) {
@@ -15,13 +26,21 @@ if (slides.length > 0 && dots.length > 0) {
             }
         });
 
-        const activeSlide = slides[index];
-        const text = activeSlide.querySelector('.text-content');
-        const img = activeSlide.querySelector('img');
-
-        // Animate text and image
-        gsap.fromTo(text, { opacity: 0, x: -100 }, { opacity: 1, x: 0, duration: 1, ease: "power3.out" });
-        gsap.fromTo(img, { opacity: 0, scale: 0.8, x: 100 }, { opacity: 1, scale: 1, x: 0, duration: 1.2, ease: "back.out(1.7)" });
+        // Update title if available
+        if (sliderTitle && slideTitles[index]) {
+            const h1 = sliderTitle.querySelector('h1');
+            const p = sliderTitle.querySelector('p');
+            
+            if (h1 && slideTitles[index].title) {
+                h1.innerHTML = slideTitles[index].title;
+            }
+            if (p && slideTitles[index].subtitle) {
+                p.innerHTML = slideTitles[index].subtitle;
+            }
+            
+            // Animate title
+            gsap.fromTo(sliderTitle, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
+        }
     }
 
     function autoPlay() {

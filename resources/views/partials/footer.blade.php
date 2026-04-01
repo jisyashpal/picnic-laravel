@@ -12,26 +12,25 @@
             <div class="col-12 col-sm-6 col-lg-4 text">
                 <h4 class="fw-bold fs-5 mb-3 text-uppercase">About Picnic</h4>
                 <ul class="list-unstyled d-flex flex-column gap-2">
-                    <li><a href="#" class="text-decoration-none">Ingredient Story</a></li>
-                    <li><a href="#" class="text-decoration-none">Our Legacy</a></li>
-                    <li><a href="#" class="text-decoration-none">Franchise Queries</a></li>
+                    <li><a href="{{ route('about') }}" class="text-decoration-none">About Us</a></li>
+                    <li><a href="{{ route('flavours') }}" class="text-decoration-none">Our Flavours</a></li>
+                    <li><a href="{{ route('media') }}" class="text-decoration-none">Media</a></li>
                 </ul>
-                <h4 class="fw-bold fs-5 mb-3 mt-4 text-uppercase">FRANCHISE QUERIES</h4>
+                <h4 class="fw-bold fs-5 mb-3 mt-4 text-uppercase">BUSINESS</h4>
                 <ul class="list-unstyled d-flex flex-column gap-2">
-                    <li><a href="#" class="text-decoration-none">Become a Business Partner</a></li>
-                    <li><a href="#" class="text-decoration-none">Franchise FAQS</a></li>
+                    <li><a href="{{ route('franchise') }}" class="text-decoration-none">Franchise</a></li>
+                    <li><a href="{{ route('distributor') }}" class="text-decoration-none">Distributor</a></li>
                 </ul>
             </div>
             <div class="col-12 col-sm-6 col-lg-4">
                 <h4 class="fw-bold fs-5 mb-3 text-uppercase">OTHERS</h4>
                 <ul class="list-unstyled d-flex flex-column gap-2">
                     <li><a href="#" class="text-decoration-none">Artist Collaboration</a></li>
-                    <li><a href="#" class="text-decoration-none">Store locator</a></li>
+                    <li><a href="{{ route('store.locator') }}" class="text-decoration-none">Store Locator</a></li>
                     <li><a href="#" class="text-decoration-none">CSR</a></li>
                     <li><a href="#" class="text-decoration-none">Legal</a></li>
                     <li><a href="#" class="text-decoration-none">Nutritional Info</a></li>
                     <li><a href="#" class="text-decoration-none">Careers</a></li>
-                    <li><a href="#" class="text-decoration-none">Blogs</a></li>
                 </ul>
             </div>
         </div>

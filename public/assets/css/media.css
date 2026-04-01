@@ -45,12 +45,7 @@
     transform: scale(1.05);
 }
 
-/* Custom Section Styles */
-.section-title {
-    font-size: 2.5rem;
-    font-family: 'Poetsen One', cursive;
-    color: #2d3748;
-}
+
 
 .captures-text {
     color: #f97316;

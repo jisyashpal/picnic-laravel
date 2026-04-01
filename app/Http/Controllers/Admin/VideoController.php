@@ -22,9 +22,19 @@ class VideoController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'video_id' => 'required|string',
+            'url' => 'required|url',
             'type' => 'nullable|string',
         ]);
+
+        // Extract video ID from YouTube URL
+        $videoId = $this->extractYouTubeVideoId($data['url']);
+
+        if (!$videoId) {
+            return back()->withErrors(['url' => 'Invalid YouTube URL. Please provide a valid YouTube video URL.'])->withInput();
+        }
+
+        $data['video_id'] = $videoId;
+
         Video::create($data);
         return redirect()->route('admin.videos.index')->with('success', 'Video added.');
     }
@@ -37,9 +47,19 @@ class VideoController extends Controller
     public function update(Request $request, Video $video)
     {
         $data = $request->validate([
-            'video_id' => 'required|string',
+            'url' => 'required|url',
             'type' => 'nullable|string',
         ]);
+
+        // Extract video ID from YouTube URL
+        $videoId = $this->extractYouTubeVideoId($data['url']);
+
+        if (!$videoId) {
+            return back()->withErrors(['url' => 'Invalid YouTube URL. Please provide a valid YouTube video URL.'])->withInput();
+        }
+
+        $data['video_id'] = $videoId;
+
         $video->update($data);
         return redirect()->route('admin.videos.index')->with('success', 'Video updated.');
     }
@@ -48,5 +68,43 @@ class VideoController extends Controller
     {
         $video->delete();
         return redirect()->route('admin.videos.index')->with('success', 'Video deleted.');
+    }
+
+    /**
+     * Extract video ID from various YouTube URL formats
+     */
+    private function extractYouTubeVideoId($url)
+    {
+        // Handle youtu.be URLs
+        if (preg_match('/youtu\.be\/([a-zA-Z0-9_-]{11})/', $url, $matches)) {
+            return $matches[1];
+        }
+
+        // Handle YouTube Shorts URLs
+        if (preg_match('/youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/', $url, $matches)) {
+            return $matches[1];
+        }
+
+        // Handle youtu.be Shorts URLs (if they exist)
+        if (preg_match('/youtu\.be\/shorts\/([a-zA-Z0-9_-]{11})/', $url, $matches)) {
+            return $matches[1];
+        }
+
+        // Handle youtube.com URLs with various formats
+        if (preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $url, $matches)) {
+            return $matches[1];
+        }
+
+        // Handle youtube.com URLs with watch?v=
+        if (preg_match('/youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/', $url, $matches)) {
+            return $matches[1];
+        }
+
+        // Handle youtube.com URLs with embed
+        if (preg_match('/youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/', $url, $matches)) {
+            return $matches[1];
+        }
+
+        return null;
     }
 }

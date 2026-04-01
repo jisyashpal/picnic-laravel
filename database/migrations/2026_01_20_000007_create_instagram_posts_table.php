@@ -9,7 +9,8 @@ return new class extends Migration {
     {
         Schema::create('instagram_posts', function (Blueprint $table) {
             $table->id();
-            $table->string('post_url');
+            $table->string('image');
+            $table->string('post_url')->nullable();
             $table->longText('embed_html')->nullable();
             $table->timestamps();
         });

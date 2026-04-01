@@ -9,5 +9,5 @@ class InstagramPost extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['post_url', 'embed_html'];
+    protected $fillable = ['image', 'post_url', 'embed_html'];
 }

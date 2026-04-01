@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="d-flex align-items-center">
             <a href="{{ route('home') }}">
-                <img src="{{ asset('assets/images/picnic-removebg-preview.png') }}" alt="LOGO" class="logo img-fluid">
+                <img src="{{ asset('public/assets/images/picnic-removebg-preview.png') }}" alt="LOGO" class="logo img-fluid">
             </a>
             <div class="d-none d-md-flex align-items-center mx-auto"></div>
 
@@ -17,7 +17,7 @@
             </div>
 
             <div class="d-none d-md-flex align-items-center mx-auto">
-                <a href="https://pureshmilk.com/"> <img class="logo ms-3 ms-md-4" src="{{ asset('assets/images/puresh-logo.png') }}" alt="Ice Cream"></a>
+                <a href="https://pureshmilk.com/"> <img class="logo ms-3 ms-md-4" src="{{ asset('public/assets/images/puresh-logo.png') }}" alt="Ice Cream"></a>
             </div>
 
             <div class="d-md-none d-flex align-items-center ms-auto">
@@ -33,14 +33,14 @@
     <div id="mobile-menu" class="collapse d-md-none position-absolute top-100 start-0 w-100 mobile-menu-bg shadow-lg mobile-nav">
         <div class="text-center pt-3">
             <a href="https://pureshmilk.com/">
-                <img src="{{ asset('assets/images/puresh-logo.png') }}" alt="Logo" class="img-fluid" style="max-width:130px;">
+                <img src="{{ asset('public/assets/images/puresh-logo.png') }}" alt="Logo" class="img-fluid" style="max-width:130px;">
             </a>
         </div>
 
         <nav class="d-flex flex-column align-items-center py-4" aria-label="Mobile navigation">
             <ul class="list-unstyled d-flex flex-column align-items-center gap-3 mb-0">
                 <li><a href="{{ route('home') }}" class="nav-link-custom fs-5"><i class="bi bi-house-fill me-2"></i>Home</a></li>
-                <li><a href="#" class="nav-link-custom fs-5">Brand Story</a></li>
+                <li><a href="{{ route('about') }}" class="nav-link-custom fs-5">Brand Story</a></li>
                 <li class="dropdown w-100 text-center">
                     <a class="nav-link-custom fs-5" data-bs-toggle="collapse" href="#flavourSub" role="button" aria-expanded="false" aria-controls="flavourSub">
                         Our Flavours<i class="bi bi-chevron-down ms-1"></i>
@@ -74,7 +74,7 @@
 <div class="d-none d-md-flex container-fluid justify-content-center align-items-center header-nav-wrapper header-line sticky-top">
     <nav class="d-flex p-2 align-items-center flex-wrap gap-1 gap-md-3 gap-lg-4 gap-xl-5 px-3 px-md-2">
         <a href="{{ route('home') }}" class="nav-link-custom"><i class="bi bi-house-fill me-2"></i></a>
-        <a href="#" class="nav-link-custom">Brand story</a>
+        <a href="{{ route('about') }}" class="nav-link-custom">Brand story</a>
 
         <div class="dropdown">
             <a href="#" class="nav-link-custom dropdown-toggle" id="flavoursDropdown" data-bs-toggle="dropdown" role="button" aria-expanded="false">

@@ -7,7 +7,7 @@
     <meta name="description" content="@yield('meta_description', $meta_description ?? 'PICNIC Ice Creams offers delicious kulfi and ice creams made with 100% pure cow milk.')">
 
     <title>@yield('title', $page_title ?? config('app.name', 'PICNIC Ice Creams'))</title>
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('public/assets/images/favicon.png') }}">
 
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,10 +21,10 @@
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/instagram-feed.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/video-feed.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/media.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/css/instagram-feed.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/css/video-feed.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/css/media.css') }}">
 
     @stack('styles')
 </head>
@@ -42,10 +42,10 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="{{ asset('assets/js/slider.js') }}"></script>
-    <script src="{{ asset('assets/js/index.js') }}"></script>
-    <script src="{{ asset('assets/js/swiper-init.js') }}"></script>
-    <script src="{{ asset('assets/js/video-swiper.js') }}"></script>
+    <script src="{{ asset('public/assets/js/slider.js') }}"></script>
+    <script src="{{ asset('public/assets/js/index.js') }}"></script>
+    <script src="{{ asset('public/assets/js/swiper-init.js') }}"></script>
+    <script src="{{ asset('public/assets/js/video-swiper.js') }}"></script>
     @stack('scripts')
 </body>
 </html>

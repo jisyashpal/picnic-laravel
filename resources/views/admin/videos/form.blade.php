@@ -4,7 +4,7 @@
 @section('header', isset($video) ? 'Edit Video' : 'Add Video')
 
 @section('content')
-<div class="card admin-card" style="max-width: 700px;">
+<div class="card admin-card mx-auto" style="max-width: 700px;">
     <div class="card-body">
         <form action="{{ isset($video) ? route('admin.videos.update', $video) : route('admin.videos.store') }}" method="POST" class="admin-form">
             @csrf
@@ -13,10 +13,10 @@
             @endif
 
             <div class="mb-3">
-                <label class="form-label">Video ID <span class="text-danger">*</span></label>
-                <input type="text" name="video_id" class="form-control @error('video_id') is-invalid @enderror" value="{{ $video->video_id ?? old('video_id') }}" required>
-                <small class="text-muted">YouTube video ID (e.g., dQw4w9WgXcQ)</small>
-                @error('video_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                <label class="form-label">YouTube URL <span class="text-danger">*</span></label>
+                <input type="url" name="url" class="form-control @error('url') is-invalid @enderror" value="{{ $video->url ?? old('url') }}" placeholder="https://youtu.be/VIDEO_ID or https://youtube.com/shorts/VIDEO_ID or https://www.youtube.com/watch?v=VIDEO_ID" required>
+                <small class="text-muted">Paste the full YouTube share link, Shorts URL, or regular video URL</small>
+                @error('url')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
 
             <div class="mb-3">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
@@ -27,8 +28,12 @@ class CategoryController extends Controller
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
         if ($request->hasFile('thumbnail')) {
-            $path = $request->file('thumbnail')->store('categories', 'public');
-            $data['thumbnail'] = '/storage/' . $path;
+            $file = $request->file('thumbnail');
+            $dir = public_path('uploads/categories');
+            File::ensureDirectoryExists($dir);
+            $filename = time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
+            $file->move($dir, $filename);
+            $data['thumbnail'] = '/uploads/categories/' . $filename;
         }
         Category::create($data);
         return redirect()->route('admin.categories.index')->with('success', 'Category created.');
@@ -47,8 +52,18 @@ class CategoryController extends Controller
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
         if ($request->hasFile('thumbnail')) {
-            $path = $request->file('thumbnail')->store('categories', 'public');
-            $data['thumbnail'] = '/storage/' . $path;
+            if ($category->thumbnail && str_starts_with($category->thumbnail, '/uploads/')) {
+                $old = public_path(ltrim($category->thumbnail, '/'));
+                if (File::exists($old)) {
+                    File::delete($old);
+                }
+            }
+            $file = $request->file('thumbnail');
+            $dir = public_path('uploads/categories');
+            File::ensureDirectoryExists($dir);
+            $filename = time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
+            $file->move($dir, $filename);
+            $data['thumbnail'] = '/uploads/categories/' . $filename;
         }
         $category->update($data);
         return redirect()->route('admin.categories.index')->with('success', 'Category updated.');
@@ -56,6 +71,12 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
+        if ($category->thumbnail && str_starts_with($category->thumbnail, '/uploads/')) {
+            $old = public_path(ltrim($category->thumbnail, '/'));
+            if (File::exists($old)) {
+                File::delete($old);
+            }
+        }
         $category->delete();
         return redirect()->route('admin.categories.index')->with('success', 'Category deleted.');
     }

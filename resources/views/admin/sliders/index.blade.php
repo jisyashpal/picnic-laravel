@@ -30,7 +30,7 @@
                     <td>{{ $slider->id }}</td>
                     <td>
                         @if($slider->image)
-                            <img src="{{ asset($slider->image) }}" alt="" class="img-thumbnail" style="max-height:60px;">
+                            <img src="{{ asset('public/' . $slider->image) }}" alt="" class="img-thumbnail" style="max-height:60px;">
                         @endif
                     </td>
                     <td>{{ $slider->title }}</td>
@@ -39,15 +39,15 @@
                     <td>{{ $slider->sort_order }}</td>
                     <td><span class="badge {{ $slider->active ? 'bg-success' : 'bg-secondary' }}">{{ $slider->active ? 'Yes' : 'No' }}</span></td>
                     <td>
-                        <a href="{{ route('admin.sliders.edit', $slider) }}" class="btn btn-xs btn-outline-primary">Edit</a>
+                        <a href="{{ route('admin.sliders.edit', $slider) }}" class="btn btn-sm btn-outline-primary">Edit</a>
                         <form action="{{ route('admin.sliders.destroy', $slider) }}" method="POST" style="display: inline;">
                             @csrf @method('DELETE')
-                            <button type="submit" class="btn btn-xs btn-outline-danger" onclick="return confirm('Delete?')">Delete</button>
+                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are You Sure Delete?')">Delete</button>
                         </form>
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="7" class="text-center text-muted py-4">No sliders. <a href="{{ route('admin.sliders.create') }}">Create one</a></td></tr>
+                <tr><td colspan="8" class="text-center text-muted py-4">No sliders. <a href="{{ route('admin.sliders.create') }}" class="btn btn-sm btn-outline-danger">Create one</a></td></tr>
             @endforelse
             </tbody>
         </table>

@@ -28,22 +28,22 @@
                     <td>{{ $product->id }}</td>
                     <td>
                         @if($product->image)
-                            <img src="{{ $product->image }}" alt="" class="img-thumbnail" style="max-height:60px;">
+                            <img src="{{ asset('public/' . $product->image) }}" alt="" class="img-thumbnail" style="max-height:60px;">
                         @endif
                     </td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->category?->name }}</td>
                     <td>{{ $product->price ? '₹' . number_format($product->price, 2) : '-' }}</td>
                     <td>
-                        <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-xs btn-outline-primary">Edit</a>
+                        <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-sm btn-outline-primary">Edit</a>
                         <form action="{{ route('admin.products.destroy', $product) }}" method="POST" style="display: inline;">
                             @csrf @method('DELETE')
-                            <button type="submit" class="btn btn-xs btn-outline-danger" onclick="return confirm('Delete?')">Delete</button>
+                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are You Sure !! Delete?')">Delete</button>
                         </form>
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="5" class="text-center text-muted py-4">No products. <a href="{{ route('admin.products.create') }}">Create one</a></td></tr>
+                <tr><td colspan="6" class="text-center text-muted py-4">No products. <a href="{{ route('admin.products.create') }}" class="btn btn-sm btn-outline-danger">Create one</a></td></tr>
             @endforelse
             </tbody>
         </table>

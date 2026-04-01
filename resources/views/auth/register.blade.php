@@ -46,7 +46,7 @@
                                 <p class="mb-4">Register to manage website content, sliders, products, and more.</p>
                             </div>
                             <div class="text-center">
-                                <img src="{{ asset('assets/images/ice-creem/5.png') }}" alt="PICNIC" class="img-fluid" style="max-height: 180px;">
+                                <img src="{{ asset('public/assets/images/ice-creem/5.png') }}" alt="PICNIC" class="img-fluid" style="max-height: 180px;">
                             </div>
                         </div>
                         <div class="col-md-7 p-4 p-md-5 bg-white">

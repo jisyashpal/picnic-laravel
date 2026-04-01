@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -31,8 +32,12 @@ class ProductController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('products', 'public');
-            $data['image'] = '/storage/' . $path;
+            $file = $request->file('image');
+            $dir = public_path('uploads/products');
+            File::ensureDirectoryExists($dir);
+            $filename = time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
+            $file->move($dir, $filename);
+            $data['image'] = '/uploads/products/' . $filename;
         }
         Product::create($data);
         return redirect()->route('admin.products.index')->with('success', 'Product created.');
@@ -54,8 +59,18 @@ class ProductController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('products', 'public');
-            $data['image'] = '/storage/' . $path;
+            if ($product->image && str_starts_with($product->image, '/uploads/')) {
+                $old = public_path(ltrim($product->image, '/'));
+                if (File::exists($old)) {
+                    File::delete($old);
+                }
+            }
+            $file = $request->file('image');
+            $dir = public_path('uploads/products');
+            File::ensureDirectoryExists($dir);
+            $filename = time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
+            $file->move($dir, $filename);
+            $data['image'] = '/uploads/products/' . $filename;
         }
         $product->update($data);
         return redirect()->route('admin.products.index')->with('success', 'Product updated.');
@@ -63,6 +78,12 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
+        if ($product->image && str_starts_with($product->image, '/uploads/')) {
+            $old = public_path(ltrim($product->image, '/'));
+            if (File::exists($old)) {
+                File::delete($old);
+            }
+        }
         $product->delete();
         return redirect()->route('admin.products.index')->with('success', 'Product deleted.');
     }

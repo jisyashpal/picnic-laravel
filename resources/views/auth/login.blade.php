@@ -46,7 +46,7 @@
                                 <p class="mb-4">Log in to manage sliders, products, stores, and more for PICNIC Ice Creams.</p>
                             </div>
                             <div class="text-center">
-                                <img src="{{ asset('assets/images/ice-creem/7.png') }}" alt="PICNIC" class="img-fluid" style="max-height: 180px;">
+                                <img src="{{ asset('public/assets/images/ice-creem/7.png') }}" alt="PICNIC" class="img-fluid" style="max-height: 180px;">
                             </div>
                         </div>
                         <div class="col-md-7 p-4 p-md-5 bg-white">

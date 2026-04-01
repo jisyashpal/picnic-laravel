@@ -29,15 +29,15 @@
                     <td>{{ $store->city }}</td>
                     <td>{{ $store->phone }}</td>
                     <td>
-                        <a href="{{ route('admin.stores.edit', $store) }}" class="btn btn-xs btn-outline-primary">Edit</a>
+                        <a href="{{ route('admin.stores.edit', $store) }}" class="btn btn-sm btn-outline-primary">Edit</a>
                         <form action="{{ route('admin.stores.destroy', $store) }}" method="POST" style="display: inline;">
                             @csrf @method('DELETE')
-                            <button type="submit" class="btn btn-xs btn-outline-danger" onclick="return confirm('Delete?')">Delete</button>
+                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete?')">Delete</button>
                         </form>
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="5" class="text-center text-muted py-4">No stores. <a href="{{ route('admin.stores.create') }}">Create one</a></td></tr>
+                <tr><td colspan="5" class="text-center text-muted py-4">No stores. <a href="{{ route('admin.stores.create') }}" class="btn btn-sm btn-outline-danger">Create one</a></td></tr>
             @endforelse
             </tbody>
         </table>

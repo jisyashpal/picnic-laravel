@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class SliderController extends Controller
 {
@@ -33,8 +33,12 @@ class SliderController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('sliders', 'public');
-            $data['image'] = '/storage/' . $path;
+            $file = $request->file('image');
+            $dir = public_path('uploads/sliders');
+            File::ensureDirectoryExists($dir);
+            $filename = time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
+            $file->move($dir, $filename);
+            $data['image'] = '/uploads/sliders/' . $filename;
         }
 
         $data['active'] = $request->boolean('active');
@@ -61,12 +65,19 @@ class SliderController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            if ($slider->image && str_starts_with($slider->image, '/storage/')) {
-                Storage::disk('public')->delete(str_replace('/storage/', '', $slider->image));
+            if ($slider->image && str_starts_with($slider->image, '/uploads/')) {
+                $old = public_path(ltrim($slider->image, '/'));
+                if (File::exists($old)) {
+                    File::delete($old);
+                }
             }
 
-            $path = $request->file('image')->store('sliders', 'public');
-            $data['image'] = '/storage/' . $path;
+            $file = $request->file('image');
+            $dir = public_path('uploads/sliders');
+            File::ensureDirectoryExists($dir);
+            $filename = time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
+            $file->move($dir, $filename);
+            $data['image'] = '/uploads/sliders/' . $filename;
         }
 
         $data['active'] = $request->boolean('active');
@@ -77,6 +88,13 @@ class SliderController extends Controller
 
     public function destroy(Slider $slider)
     {
+        if ($slider->image && str_starts_with($slider->image, '/uploads/')) {
+            $old = public_path(ltrim($slider->image, '/'));
+            if (File::exists($old)) {
+                File::delete($old);
+            }
+        }
+
         $slider->delete();
         return redirect()->route('admin.sliders.index')->with('success', 'Slider deleted.');
     }

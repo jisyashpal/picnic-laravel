@@ -4,7 +4,7 @@
 @section('header', isset($product) ? 'Edit Product' : 'Add Product')
 
 @section('content')
-<div class="card admin-card" style="max-width: 700px;">
+<div class="card admin-card mx-auto" style="max-width: 700px;">
     <div class="card-body">
         <form action="{{ isset($product) ? route('admin.products.update', $product) : route('admin.products.store') }}" method="POST" enctype="multipart/form-data" class="admin-form">
             @csrf
@@ -41,7 +41,7 @@
                 @error('image')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 @if(!empty($product?->image))
                     <div class="mt-2">
-                        <img src="{{ $product->image }}" alt="Preview" class="img-thumbnail preview-thumb">
+                        <img src="{{ asset('public/' . $product->image) }}" alt="Preview" class="img-thumbnail preview-thumb">
                     </div>
                 @endif
             </div>

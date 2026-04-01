@@ -4,7 +4,7 @@
 @section('header', isset($store) ? 'Edit Store' : 'Add Store')
 
 @section('content')
-<div class="card admin-card" style="max-width: 700px;">
+<div class="card admin-card mx-auto" style="max-width: 700px;">
     <div class="card-body">
         <form action="{{ isset($store) ? route('admin.stores.update', $store) : route('admin.stores.store') }}" method="POST" class="admin-form">
             @csrf
